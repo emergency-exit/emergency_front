@@ -1,6 +1,6 @@
 module.exports = {
     head: {
-        title: 'nodeBird',
+        title: 'potato-velog',
     },
     modules: [
         '@nuxtjs/vuetify',
