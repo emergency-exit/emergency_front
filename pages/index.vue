@@ -1,11 +1,10 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12" xs="12" md="3" v-for="i in this.example" :key="i">
+      <v-col v-for="i in example" :key="i" cols="12" xs="12" md="3">
         <post-card />
       </v-col>
     </v-row>
-
   </div>
 </template>
 

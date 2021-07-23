@@ -8,12 +8,17 @@
         <v-spacer />
         <v-toolbar-items>
           <v-text-field
-              label="검색"
-              hide-details
-              prepend-icon="mdi-magify"
-              :style="{display: 'flex', alignItems: 'center'}"
+            label="검색"
+            hide-details
+            prepend-icon="mdi-magify"
+            :style="{ display: 'flex', alignItems: 'center' }"
           />
-          <v-btn text nuxt to="/login" :style="{display: 'flex', alignItems: 'center'}">
+          <v-btn
+            text
+            nuxt
+            to="/login"
+            :style="{ display: 'flex', alignItems: 'center' }"
+          >
             <div>로그인</div>
           </v-btn>
           <!--          <v-dialog v-model="dialog" width="600px" >-->
@@ -61,15 +66,11 @@
 export default {
   data() {
     return {
-      dialog: false,
-    }
+      dialog: false
+    };
   },
-  methods: {
-
-  }
-}
+  methods: {}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

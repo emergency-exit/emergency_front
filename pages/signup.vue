@@ -6,38 +6,38 @@
           <v-subheader>회원가입</v-subheader>
           <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
             <v-text-field
-                v-model="email"
-                label="이메일"
-                type="email"
-                :rules="emailRules"
-                required
+              v-model="email"
+              label="이메일"
+              type="email"
+              :rules="emailRules"
+              required
             />
             <v-text-field
-                v-model="password"
-                label="비밀번호"
-                type="password"
-                :rules="passwordRules"
-                required
+              v-model="password"
+              label="비밀번호"
+              type="password"
+              :rules="passwordRules"
+              required
             />
             <v-text-field
-                v-model="passwordCheck"
-                label="비밀번호 확인"
-                type="password"
-                :rules="passwordCheckRules"
-                required
+              v-model="passwordCheck"
+              label="비밀번호 확인"
+              type="password"
+              :rules="passwordCheckRules"
+              required
             />
             <v-text-field
-                v-model="nickname"
-                label="닉네임"
-                type="nickname"
-                :rules="nicknameRules"
-                required
+              v-model="nickname"
+              label="닉네임"
+              type="nickname"
+              :rules="nicknameRules"
+              required
             />
             <v-checkbox
-                v-model="terms"
-                label="ㄱㄱ?"
-                :rules="[ v => !!v || '약관에 동의하세요']"
-                required
+              v-model="terms"
+              label="ㄱㄱ?"
+              :rules="[ v => !!v || '약관에 동의하세요']"
+              required
             />
             <v-btn color="green" type="submit">
               <div>
