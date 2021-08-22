@@ -48,8 +48,10 @@ export default {
   methods: {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
-        alert("rr");
-
+        this.$store.dispatch("members/login", {
+          email: this.email,
+          password: this.password
+        })
       }
     }
   }
