@@ -14,13 +14,20 @@
             :style="{ display: 'flex', alignItems: 'center' }"
           />
           <v-btn
+            v-if="myInfo === null"
             text
             nuxt
             to="/login"
             :style="{ display: 'flex', alignItems: 'center' }"
           >
-            <div v-if="!myInfo">로그인</div>
-            <div v-else>로그아웃</div>
+            <div>
+              로그인
+            </div>
+          </v-btn>
+          <v-btn v-else>
+            <div>
+              <my-info :my-info="myInfo" />
+            </div>
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
@@ -32,7 +39,9 @@
 </template>
 
 <script>
+import MyInfo from '../components/MyInfo';
 export default {
+  components: {MyInfo},
   data() {
     return {
       dialog: false

@@ -17,7 +17,6 @@ export const actions = {
         name: payload.name
       })
       .then(data => {
-        console.log(data);
         this.$router.push({
           path: "/"
         });
@@ -34,8 +33,6 @@ export const actions = {
         password: payload.password
       })
       .then(data => {
-        console.log(data);
-        console.log(data.data);
         localStorage.setItem("token", data.data.data);
         dispatch("getMyInfo");
       })
@@ -51,9 +48,10 @@ export const actions = {
           Authorization: localStorage.getItem("token")
         }
       })
-      .then(data => {
-        console.log(data);
-        commit("getMyInfo", data.data.data);
+      .then(res => {
+        commit("getMyInfo", {
+          data: res.data
+        });
         this.$router.push({
           path: "/"
         });

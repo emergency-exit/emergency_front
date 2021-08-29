@@ -1,33 +1,32 @@
 export const state = () => ({
-  hello: "posts",
-  mainPosts: []
+  mainPosts: [],
+  hasMorePost: true
 });
 
 export const mutations = {
-  BYE(state) {
-    state.hello = "bye";
-  },
-  addMainPost(state, payload) {
-    state.mainPosts.unshift(payload);
-  },
-  removeMainPost(state, payload) {
-    const index = state.mainPosts.findIndex(v => v.id === payload.id);
-    state.mainPosts.splice(index, 1);
-  },
-  addComment(state, payload) {
-    const index = state.mainPosts.findIndex(v => v.id === payload.postId);
-    state.mainPosts[index].Comments.unshift(payload);
+  loadPosts(state, payload) {
+    console.log(payload);
+    state.mainPosts = state.mainPosts.concat(payload);
+    // state.hasMorePost = payload.length === 5;
+    console.log(state.mainPosts);
   }
 };
 
 export const actions = {
-  add({ commit }, payload) {
-    commit("addMainPost", payload); // index에 addMainPost가 있으면 index꺼 불러옴 {root: true}
-  },
-  remove({ commit }, payload) {
-    commit("removeMainPost", payload);
-  },
-  addComment({ commit }, payload) {
-    commit("addComment", payload);
+  loadPosts({ commit, state }) {
+    console.log("loadPosts");
+    if (state.hasMorePost) {
+      this.$axios
+        .get(`/board/list?lastBoardId=10&size=2&period=LATEST`)
+        .then(res => {
+          console.log("sdf");
+          console.log(res.data.data);
+          commit("loadPosts", res.data.data);
+        })
+        .catch(err => {
+          alert("게시글을 불러오는데 실패하였습니다.");
+        });
+      commit("loadPosts");
+    }
   }
 };

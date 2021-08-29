@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <v-row>
-      <v-col v-for="i in example" :key="i" cols="12" xs="12" md="3">
-        <post-card />
-      </v-col>
-    </v-row>
-  </div>
+  <v-container>
+    <div>
+      <post-card v-for="i in mainPosts" :key="i" cols="12" xs="12" md="3" :post="i" />
+    </div>
+  </v-container>
 </template>
 
 <script>
@@ -14,9 +12,23 @@ export default {
   components: {PostCard},
   data() {
     return {
-      example: ["1", "2", "3", "4", "5"]
+      
     }
-  }
+  },
+  fetch({store}) {
+    return store.dispatch('posts/loadPosts', {reset: true});
+  },
+  computed: {
+    myInfo() {
+      return this.$store.state.members.myInfo
+    },
+    mainPosts() {
+      return this.$store.state.posts.mainPosts;
+    },
+    hasMorePost() {
+      return this.$store.state.posts.hasMorePost;
+    }
+  },
 }
 </script>
 
