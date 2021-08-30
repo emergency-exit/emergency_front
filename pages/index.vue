@@ -16,7 +16,7 @@ export default {
     }
   },
   fetch({store}) {
-    return store.dispatch('posts/loadPosts', {reset: true});
+    return store.dispatch('posts/loadPosts');
   },
   computed: {
     myInfo() {
@@ -29,6 +29,9 @@ export default {
       return this.$store.state.posts.hasMorePost;
     }
   },
+  beforeCreate() {
+    this.$store.dispatch("members/getMyInfo");
+  }
 }
 </script>
 

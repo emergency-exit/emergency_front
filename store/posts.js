@@ -13,20 +13,15 @@ export const mutations = {
 };
 
 export const actions = {
-  loadPosts({ commit, state }) {
-    console.log("loadPosts");
-    if (state.hasMorePost) {
-      this.$axios
-        .get(`/board/list?lastBoardId=10&size=2&period=LATEST`)
-        .then(res => {
-          console.log("sdf");
-          console.log(res.data.data);
-          commit("loadPosts", res.data.data);
-        })
-        .catch(err => {
-          alert("게시글을 불러오는데 실패하였습니다.");
-        });
-      commit("loadPosts");
+  async loadPosts({ commit, state }) {
+    try {
+      const res = await this.$axios.get(
+        `/board/list?lastBoardId=10&size=2&period=LATEST`
+      );
+      commit("loadPosts", res.data.data);
+    } catch (err) {
+      console.error(err);
+      alert("게시글 불러오는데 실패했습니다.");
     }
   }
 };

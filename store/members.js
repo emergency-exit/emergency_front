@@ -41,23 +41,21 @@ export const actions = {
         alert("로그인에 실패했습니다.");
       });
   },
-  getMyInfo({ commit }) {
-    this.$axios
-      .get("/api/v1/myInfo", {
+  async getMyInfo({ commit }) {
+    try {
+      const res = await this.$axios.get("/api/v1/myInfo", {
         headers: {
           Authorization: localStorage.getItem("token")
         }
-      })
-      .then(res => {
-        commit("getMyInfo", {
-          data: res.data
-        });
-        this.$router.push({
-          path: "/"
-        });
-      })
-      .catch(err => {
-        console.error(err);
       });
+      commit("getMyInfo", {
+        data: res.data
+      });
+      this.$router.push({
+        path: "/"
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

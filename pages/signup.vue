@@ -78,6 +78,9 @@ export default {
       ],
     }
   },
+  beforeCreate() {
+    this.$store.dispatch("members/getMyInfo");
+  },
   methods: {
     onSubmitForm() {
       // valid가 true가 됨

@@ -46,6 +46,9 @@ export default {
       ]
     }
   },
+  beforeCreate() {
+    this.$store.dispatch("members/getMyInfo");
+  },
   methods: {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
