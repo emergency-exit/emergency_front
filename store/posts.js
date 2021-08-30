@@ -13,7 +13,6 @@ export const mutations = {
 
 export const actions = {
   loadPosts: throttle(async function({ commit, state }, payload) {
-    console.log("loadPosts");
     try {
       let lastPost = state.mainPosts[state.mainPosts.length - 1];
       if (state.mainPosts.length === 0) {
@@ -21,7 +20,7 @@ export const actions = {
       }
       const res = await this.$axios.get(
         `/board/list?lastBoardId=${lastPost &&
-          lastPost.boardId}&size=5&period=LATEST`
+          lastPost.boardId}&size=8&period=LATEST`
       );
       console.log(res.data.data);
       commit("loadPosts", res.data.data);

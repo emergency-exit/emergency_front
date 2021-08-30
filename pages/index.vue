@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <div>
-      <post-card v-for="i in mainPosts" :key="i.boardId" cols="12" xs="12" md="3" :post="i" />
+      <v-row>
+        <v-col v-for="i in mainPosts" :key="i.boardId" cols="12" xs="12" md="3">
+          <post-card :post="i" />
+        </v-col>
+      </v-row>
     </div>
   </v-container>
 </template>
