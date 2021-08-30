@@ -1,19 +1,18 @@
 <template>
   <v-container>
     <div>
-      <post-card v-for="i in mainPosts" :key="i" cols="12" xs="12" md="3" :post="i" />
+      <post-card v-for="i in mainPosts" :key="i.boardId" cols="12" xs="12" md="3" :post="i" />
     </div>
   </v-container>
 </template>
 
 <script>
 import PostCard from "../components/PostCard";
+
 export default {
   components: {PostCard},
   data() {
-    return {
-      
-    }
+    return {}
   },
   fetch({store}) {
     return store.dispatch('posts/loadPosts');
@@ -29,8 +28,20 @@ export default {
       return this.$store.state.posts.hasMorePost;
     }
   },
-  beforeCreate() {
-    this.$store.dispatch("members/getMyInfo");
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll() {
+      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+        if (this.hasMorePost) {
+          this.$store.dispatch('posts/loadPosts');
+        }
+      }
+    }
   }
 }
 </script>

@@ -6,10 +6,10 @@
           <v-card-title>card</v-card-title>
         </v-img>
         <v-card-subtitle>
-          title
+          {{ post.title }}
         </v-card-subtitle>
         <v-card-text>
-          <div>ㄱㄱ</div>
+          <div>{{ post.content }}</div>
         </v-card-text>
         <v-card-actions>
           <v-spacer />

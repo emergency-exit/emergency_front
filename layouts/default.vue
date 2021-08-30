@@ -40,6 +40,7 @@
 
 <script>
 import MyInfo from '../components/MyInfo';
+import Cookie from "js-cookie";
 export default {
   components: {MyInfo},
   data() {
@@ -52,7 +53,10 @@ export default {
       return this.$store.state.members.myInfo
     }
   },
-  methods: {}
+  beforeCreate() {
+    this.$store.dispatch("members/getMyInfo");
+  },
+  methods: {},
 };
 </script>
 

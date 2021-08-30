@@ -1,3 +1,4 @@
+import throttle from "lodash.throttle";
 export const state = () => ({
   mainPosts: [],
   hasMorePost: true
@@ -5,23 +6,27 @@ export const state = () => ({
 
 export const mutations = {
   loadPosts(state, payload) {
-    console.log(payload);
     state.mainPosts = state.mainPosts.concat(payload);
-    // state.hasMorePost = payload.length === 5;
-    console.log(state.mainPosts);
+    state.hasMorePost = payload.length === 5;
   }
 };
 
 export const actions = {
-  async loadPosts({ commit, state }) {
+  loadPosts: throttle(async function({ commit, state }, payload) {
+    console.log("loadPosts");
     try {
+      let lastPost = state.mainPosts[state.mainPosts.length - 1];
+      if (state.mainPosts.length === 0) {
+        lastPost = { boardId: 0 };
+      }
       const res = await this.$axios.get(
-        `/board/list?lastBoardId=10&size=2&period=LATEST`
+        `/board/list?lastBoardId=${lastPost &&
+          lastPost.boardId}&size=5&period=LATEST`
       );
+      console.log(res.data.data);
       commit("loadPosts", res.data.data);
     } catch (err) {
       console.error(err);
-      alert("게시글 불러오는데 실패했습니다.");
     }
-  }
+  }, 2000)
 };

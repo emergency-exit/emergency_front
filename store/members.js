@@ -1,3 +1,5 @@
+import Cookie from "js-cookie";
+
 export const state = () => ({
   myInfo: null
 });
@@ -33,7 +35,7 @@ export const actions = {
         password: payload.password
       })
       .then(data => {
-        localStorage.setItem("token", data.data.data);
+        Cookie.set("token", data.data.data);
         dispatch("getMyInfo");
       })
       .catch(err => {
@@ -42,10 +44,11 @@ export const actions = {
       });
   },
   async getMyInfo({ commit }) {
+    console.log("cookie", Cookie.get("token"));
     try {
       const res = await this.$axios.get("/api/v1/myInfo", {
         headers: {
-          Authorization: localStorage.getItem("token")
+          Authorization: Cookie.get("token")
         }
       });
       commit("getMyInfo", {
