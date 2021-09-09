@@ -1,4 +1,8 @@
 module.exports = {
+  buildModules: ['@nuxtjs/tailwindcss'],
+  eslint: {
+    fix: true
+  },
   head: {
     title: "potato-velog"
   },
@@ -6,8 +10,8 @@ module.exports = {
   plugin: [],
   vuetify: {},
   axios: {
-    baseURL: "http://localhost:8080",
-    browserBaseURL: "http://localhost:8080",
+    baseURL: "http://cavel-api.ga",
+    // browserBaseURL: "http://localhost:8080",
     https: false
   },
   auth: {
