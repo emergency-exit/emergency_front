@@ -40,7 +40,7 @@ export const actions = {
     try {
       const res = await this.$axios.get("/api/v1/myInfo", {
         headers: {
-          Authorization: sessionStorage.getItem("token")
+          Authorization: process.server ? null : sessionStorage.getItem("token")
         }
       });
       commit("getMyInfo", {
