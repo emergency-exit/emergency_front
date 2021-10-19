@@ -10,7 +10,7 @@ module.exports = {
   plugin: [],
   vuetify: {},
   axios: {
-    baseURL: "http://cavel-api.ga",
+    baseURL: "http://ec2-3-38-124-11.ap-northeast-2.compute.amazonaws.com",
     // browserBaseURL: "http://localhost:8080",
     https: false
   },
