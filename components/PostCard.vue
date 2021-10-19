@@ -3,7 +3,7 @@
     <v-container>
       <v-card>
         <v-img>
-          <v-card-title>card</v-card-title>
+          <v-card-title>{{ post.title }}</v-card-title>
         </v-img>
         <v-card-subtitle>
           {{ post.title }}

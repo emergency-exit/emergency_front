@@ -2,7 +2,7 @@
   <v-container>
     <div>
       <v-row>
-        <v-col v-for="i in mainPosts" :key="i.boardId" cols="12" xs="12" md="3">
+        <v-col v-for="i in mockUp" :key="i.boardId" cols="12" xs="12" md="3">
           <post-card :post="i" />
         </v-col>
       </v-row>
@@ -17,7 +17,27 @@ import axios from 'axios';
 export default {
   components: {PostCard},
   data() {
-    return {}
+    return {
+      mockUp : [{
+        title:"안녕1",
+        content:"헬로1"
+      },{
+        title:"안녕2",
+        content:"헬로2"
+      },{
+        title:"안녕3",
+        content:"헬로3"
+      },{
+        title:"안녕4",
+        content:"헬로4"
+      },{
+        title:"안녕5",
+        content:"헬로5"
+      },{
+        title:"안녕6",
+        content:"헬로6"
+      },]
+    }
   },
   fetch({store}) {
     return store.dispatch('posts/loadPosts');
