@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 2019,
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "env": {
@@ -8,7 +8,7 @@
     "node": true
   },
   "extends": [
-    "plugin:vue/recommended"
+    "plugin:nuxt/recommended"
   ],
   "plugins": [],
   "rules": {
