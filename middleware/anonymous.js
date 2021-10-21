@@ -1,5 +1,5 @@
 export default function({ store, redirect }) {
-  if (store.state.members.myInfo) {
+  if (store.state.member.token) {
     redirect("/");
   }
 }

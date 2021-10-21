@@ -13,7 +13,7 @@
         :style="{ display: 'flex', alignItems: 'center' }"
       />
       <v-btn
-        v-if="myInfo === null"
+        v-if="token === null"
         text
         nuxt
         to="/login"
@@ -21,7 +21,7 @@
       >
         로그인
       </v-btn>
-      <my-info v-if="myInfo" :my-info="myInfo" />
+      <my-info v-if="token" :my-info="token" />
     </v-app-bar>
 
     <v-main>
@@ -31,25 +31,30 @@
         <router-view />
       </v-container>
     </v-main>
+
+    <UIFooter/>
+    
   </v-app>
 </template>
 
 <script>
 import MyInfo from '../components/MyInfo';
+import UIFooter from '../components/UI/UIFooter';
+
 export default {
-  components: {MyInfo},
+  components: {MyInfo,UIFooter},
   data() {
     return {
       dialog: false
     };
   },
   computed: {
-    myInfo() {
-      return this.$store.state.members.myInfo
+    token() {
+      return this.$store.state.member.token
     }
   },
   beforeCreate() {
-    this.$store.dispatch("members/getMyInfo");
+    this.$store.dispatch("member/getMyInfo");
   },
   methods: {},
 };

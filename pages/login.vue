@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-card>
+  <v-container bg fill-height fill-width>
+    <v-card  align-center align="center">
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-container>
           <v-text-field

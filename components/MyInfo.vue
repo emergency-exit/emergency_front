@@ -1,5 +1,5 @@
 <template>
-  <!-- <v-container> -->
+  <v-container>
   <v-row justify="center">
     <v-menu bottom min-width="200px" rounded offset-y>
       <template #activator="{on}">
@@ -45,7 +45,7 @@
       </v-card>
     </v-menu>
   </v-row>
-  <!-- </v-container> -->
+  </v-container>
 </template>
 <script>
 export default {

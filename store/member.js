@@ -1,10 +1,10 @@
 export const state = () => ({
-  myInfo: null
+  token: null
 });
 
 export const mutations = {
   getMyInfo(state, payload) {
-    state.myInfo = payload;
+    state.token = payload;
   }
 };
 

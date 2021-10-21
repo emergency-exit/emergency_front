@@ -43,8 +43,8 @@ export default {
     return store.dispatch('posts/loadPosts');
   },
   computed: {
-    myInfo() {
-      return this.$store.state.members.myInfo
+    token() {
+      return this.$store.state.member.token
     },
     mainPosts() {
       return this.$store.state.posts.mainPosts;
