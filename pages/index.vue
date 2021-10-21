@@ -54,7 +54,6 @@ export default {
     }
   },
   async created() {
-    console.log(await axios.get("http://ec2-3-38-124-11.ap-northeast-2.compute.amazonaws.com/ping"));
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll);

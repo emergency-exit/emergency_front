@@ -70,10 +70,10 @@ export default {
         v => !!v || '이름은 필수입니다.',
       ],
       passwordRules: [
-        v => !!v || '비밀번호은 필수입니다.',
+        v => !!v || '비밀번호는 필수입니다.',
       ],
       passwordCheckRules: [
-        v => !!v || '비밀번호은 필수입니다.',
+        v => !!v || '비밀번호는 필수입니다.',
         v => v === this.password || '비밀번호가 일치하지 않습니다.'
       ],
     }
