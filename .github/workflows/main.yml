@@ -22,9 +22,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Deploy To Heroku
-        run: |
-          echo Deploy To Heroku
-        uses: actions/checkout@v2
+        - run: echo Deploy To Heroku
+        - uses: actions/checkout@v2
         - uses: AkhileshNS/heroku-deploy@v3.12.12
           with:
             heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
