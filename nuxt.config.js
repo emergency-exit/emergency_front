@@ -13,6 +13,7 @@ export default {
     // browserBaseURL: "http://localhost:8080",
     https: false
   },
+  server: {host: '0.0.0.0'},
   // auth: {
   //   strategies: {
   //     local: {
