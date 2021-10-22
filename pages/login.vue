@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="space-around">
-      <v-card min-width="300" min-height="250" align="center">
+      <v-card min-width="300" min-height="250" justify="center">
         <v-card-title>로그인</v-card-title>
         <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
           <v-container>
@@ -19,13 +19,14 @@
               type="password"
               required
             />
-            <v-card-actions>
-              <v-btn color="primary" outlined type="submit" :disabled="!valid">
-                로그인
-              </v-btn>
-              <v-btn nuxt to="/signup" outlined> 회원가입 </v-btn>
-            </v-card-actions>
           </v-container>
+          <v-divider class="mt-12"></v-divider>
+          <v-card-actions>
+            <v-btn color="primary" outlined type="submit" :disabled="!valid">
+              로그인
+            </v-btn>
+            <v-btn nuxt to="/signup" outlined> 회원가입 </v-btn>
+          </v-card-actions>
         </v-form>
       </v-card>
     </v-row>
@@ -50,7 +51,7 @@ export default {
   methods: {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
-        this.$store.dispatch("members/login", {
+        this.$store.dispatch("member/login", {
           email: this.email,
           password: this.password,
         });

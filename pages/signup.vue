@@ -2,8 +2,8 @@
   <v-row justify="space-around">
     <v-card justify="space-around" min-width="400">
       <v-card-title>회원가입</v-card-title>
-      <v-container>
-        <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
+      <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
+        <v-container>
           <v-text-field
             v-model="email"
             label="이메일"
@@ -38,11 +38,12 @@
             :rules="[(v) => !!v || '약관에 동의하세요']"
             required
           />
-          <v-card-actions>
-            <v-btn type="submit" color="primary" outlined>회원가입</v-btn>
-          </v-card-actions>
-        </v-form>
-      </v-container>
+        </v-container>
+        <v-divider class="mt-12"></v-divider>
+        <v-card-actions>
+          <v-btn type="submit" color="primary" text>회원가입</v-btn>
+        </v-card-actions>
+      </v-form>
     </v-card>
   </v-row>
 </template>

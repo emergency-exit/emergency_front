@@ -1,24 +1,29 @@
+/* eslint-disable no-console */
 export const state = () => ({
-  token: null
+  token: null,
 });
 
 export const mutations = {
   getMyInfo(state, payload) {
     state.token = payload;
-  }
+  },
 };
 
 export const actions = {
-  async signUp({ commit }, payload) {
+  async signUp({ commit, dispatch }, payload) {
     try {
-      await this.$axios.post("/signup", {
-        email: payload.email,
-        password: payload.password,
-        name: payload.name
-      });
-      this.$router.push({
-        path: "/"
-      });
+      if (
+        (await this.$axios.post("/signup", {
+          email: payload.email,
+          password: payload.password,
+          name: payload.name,
+        }).status) === 200
+      ) {
+        await dispatch("login");
+        this.$router.push({
+          path: "/",
+        });
+      }
     } catch (err) {
       console.error(err);
     }
@@ -27,7 +32,7 @@ export const actions = {
     try {
       const data = await this.$axios.post("/login", {
         email: payload.email,
-        password: payload.password
+        password: payload.password,
       });
       sessionStorage.setItem("token", data.data.data);
       dispatch("getMyInfo");
@@ -38,19 +43,23 @@ export const actions = {
   },
   async getMyInfo({ commit }) {
     try {
-      const res = await this.$axios.get("/api/v1/myInfo", {
+      if (!state?.token)
+        throw new Error("Trying fetching info with invalid token");
+      const data = await this.$axios.get("/api/v1/myInfo", {
         headers: {
-          Authorization: process.server ? null : sessionStorage.getItem("token")
-        }
-      });
-      commit("getMyInfo", {
-        data: res.data
-      });
-      this.$router.push({
-        path: "/"
-      });
+          Authorization: state.token,
+        },
+      })?.data;
+
+      data &&
+        commit("getMyInfo", {
+          data,
+        });
+      // this.$router.push({
+      //   path: "/",
+      // });
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };

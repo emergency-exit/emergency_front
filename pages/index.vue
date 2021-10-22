@@ -21,26 +21,32 @@ export default {
         {
           title: "안녕1",
           content: "헬로1",
+          id: 1,
         },
         {
           title: "안녕2",
           content: "헬로2",
+          id: 2,
         },
         {
           title: "안녕3",
           content: "헬로3",
+          id: 3,
         },
         {
           title: "안녕4",
           content: "헬로4",
+          id: 4,
         },
         {
           title: "안녕5",
           content: "헬로5",
+          id: 5,
         },
         {
           title: "안녕6",
           content: "헬로6",
+          id: 6,
         },
       ],
     };

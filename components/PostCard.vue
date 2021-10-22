@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <v-img>
-      <v-card-title>{{ post.title }}</v-card-title>
+      <nuxt-link :to="postPath">
+        <v-card-title>{{ post.title }}</v-card-title>
+      </nuxt-link>
     </v-img>
     <v-card-subtitle>
       {{ post.title }}
@@ -37,6 +39,11 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    postPath() {
+      return `/post/${this.post.id}`;
+    },
   },
 };
 </script>
