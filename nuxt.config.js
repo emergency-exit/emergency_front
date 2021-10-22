@@ -1,19 +1,23 @@
 export default {
   eslint: {
-    fix: true
+    fix: true,
   },
   head: {
-    title: "potato-velog"
+    title: "potato-velog",
   },
   modules: ["@nuxtjs/vuetify", "@nuxtjs/axios"],
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    "@nuxtjs/eslint-module",
+  ],
   plugin: [],
   vuetify: {},
   axios: {
     baseURL: "http://www.cavel-api.ga",
     // browserBaseURL: "http://localhost:8080",
-    https: false
+    https: false,
   },
-  server: {host: '0.0.0.0'},
+  server: { host: "0.0.0.0" },
   // auth: {
   //   strategies: {
   //     local: {

@@ -1,60 +1,28 @@
 <template>
-  <v-app>
-    <v-app-bar app absolute
-               color="white"
-               elevate-on-scroll
-    >
-      <img class="logo" src="@/assets/images/EmergencyExit.svg"><nuxt-link to="/"><v-app-bar-title>Emergency Exit</v-app-bar-title></nuxt-link>
-      <v-spacer />
-      <v-text-field
-        label="검색"
-        hide-details
-        prepend-icon="mdi-magify"
-        :style="{ display: 'flex', alignItems: 'center' }"
-      />
-      <v-btn
-        v-if="token === null"
-        text
-        nuxt
-        to="/login"
-        :style="{ display: 'flex', alignItems: 'center' }"
-      >
-        로그인
-      </v-btn>
-      <my-info v-if="token" :my-info="token" />
-    </v-app-bar>
-
-    <v-main>
+  <v-app app>
+    <UIHeader app />
+    <v-main app>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid>
+      <v-container fluid fill-height>
         <!-- If using vue-router -->
         <router-view />
       </v-container>
     </v-main>
 
-    <UIFooter/>
-    
+    <UIFooter app />
   </v-app>
 </template>
 
 <script>
-import MyInfo from '../components/MyInfo';
-import UIFooter from '../components/UI/UIFooter';
+import UIFooter from "../components/UI/UIFooter";
+import UIHeader from "../components/UI/UIHeader";
 
 export default {
-  components: {MyInfo,UIFooter},
+  components: { UIFooter, UIHeader },
   data() {
     return {
-      dialog: false
+      dialog: false,
     };
-  },
-  computed: {
-    token() {
-      return this.$store.state.member.token
-    }
-  },
-  beforeCreate() {
-    this.$store.dispatch("member/getMyInfo");
   },
   methods: {},
 };

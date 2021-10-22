@@ -1,34 +1,30 @@
 <template>
-  <div>
-    <v-container>
-      <v-card>
-        <v-img>
-          <v-card-title>{{ post.title }}</v-card-title>
-        </v-img>
-        <v-card-subtitle>
-          {{ post.title }}
-        </v-card-subtitle>
-        <v-card-text>
-          <div>{{ post.content }}</div>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
+  <v-card>
+    <v-img>
+      <v-card-title>{{ post.title }}</v-card-title>
+    </v-img>
+    <v-card-subtitle>
+      {{ post.title }}
+    </v-card-subtitle>
+    <v-card-text>
+      <div>{{ post.content }}</div>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer />
 
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
 
-          <v-btn icon>
-            <v-icon>mdi-bookmark</v-icon>
-          </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-bookmark</v-icon>
+      </v-btn>
 
-          <v-btn icon>
-            <v-icon>mdi-share-variant</v-icon>
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-container>
-  </div>
+      <v-btn icon>
+        <v-icon>mdi-share-variant</v-icon>
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
@@ -37,16 +33,12 @@ export default {
     post: {
       type: Object,
       required: true,
-    }
+    },
   },
   data() {
-    return {
-
-    }
-  }
-}
+    return {};
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
