@@ -21,13 +21,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Deploy To Heroku
-        run: echo Deploy To Heroku
+      - name: Prepare
         uses: actions/checkout@v2
+      - name: Deploy
         uses: AkhileshNS/heroku-deploy@v3.12.12
-          with:
-            heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
-            heroku_email: ${{Secrets.HEROKU_EMAIL}}
-            heroku_app_name: ${{Secrets.HEROKU_APP_NAME}}
-            dontuseforce: true
+        with:
+          heroku_api_key: ${{Secrets.HEROKU_API_KEY}}
+          heroku_email: ${{Secrets.HEROKU_EMAIL}}
+          heroku_app_name: ${{Secrets.HEROKU_APP_NAME}}
+          dontuseforce: true
 
